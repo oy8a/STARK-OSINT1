@@ -38,12 +38,19 @@ bot.onText(/\/start/, async (msg) => {
     return bot.sendMessage(chatId, '✅ You are already verified! Send me a phone number to get info.');
   }
 
-  // Check membership
-  const isMember = await isUserMember(chatId, userId);
-  if (isMember) {
-    verifiedUsers.add(userId);
-    return bot.sendMessage(chatId, '✅ You are a member! Send me a phone number to get info.');
+  // ---------- Helper: Check channel membership with logging ----------
+async function isUserMember(chatId, userId) {
+  try {
+    const chatMember = await bot.getChatMember(CHANNEL_USERNAME, userId);
+    const status = chatMember.status;
+    console.log(`Membership check for user ${userId}: status = ${status}`);
+    return ['creator', 'administrator', 'member', 'restricted'].includes(status);
+  } catch (error) {
+    console.error('Error in isUserMember:', error.response?.body || error.message);
+    // If the bot is not in the channel, error message will indicate that
+    return false;
   }
+}
 
   // Not a member: show join button and verify button
   const inlineKeyboard = {
