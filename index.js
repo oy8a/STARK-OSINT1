@@ -110,7 +110,9 @@ bot.on('message', async (msg) => {
   if (!cleaned) {
     return bot.sendMessage(chatId, 'Please send a valid phone number.');
   }
-
+    // ---------- Send loading message ----------
+  const loadingMsg = await bot.sendMessage(chatId, '⏳ Fetching information, please wait...');
+  
   try {
     const params = { key: API_KEY, num: cleaned };
     const response = await axios.get(API_URL, { params, timeout: 10000 });
