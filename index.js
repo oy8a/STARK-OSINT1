@@ -6,7 +6,7 @@ const axios = require('axios');
 const TELEGRAM_TOKEN = '8769883888:AAH1Yz_uauMCfpWf64K0vfRiXDhYP7zu8Go';
 const API_KEY = 'ft-key-lt-5lo4p9s28awe';
 const API_URL = 'https://ft-osint.onrender.com/api/number';
-const DEVELOPER = '@ftgamer2';
+const DEVELOPER = 'made by ~ @fucpd';
 const CHANNEL_USERNAME = '@tieamx'; // 🔁 REPLACE WITH YOUR CHANNEL
 const PORT = process.env.PORT || 8080;
 
