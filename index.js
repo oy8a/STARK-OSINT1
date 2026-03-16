@@ -7,7 +7,7 @@ const TELEGRAM_TOKEN = '8769883888:AAH1Yz_uauMCfpWf64K0vfRiXDhYP7zu8Go';
 const API_KEY = 'ft-key-lt-5lo4p9s28awe';
 const API_URL = 'https://ft-osint.onrender.com/api/number';
 const DEVELOPER = '@fucpd';
-const CHANNEL_USERNAME = '@xtradegc'; // 🔁 REPLACE WITH YOUR CHANNEL
+const CHANNEL_USERNAME = '@tieamx'; // 🔁 REPLACE WITH YOUR CHANNEL
 const PORT = process.env.PORT || 8080;
 
 // ---------- In-memory store for verified users ----------
@@ -32,10 +32,7 @@ async function isUserMember(chatId, userId) {
 bot.onText(/\/start/, async (msg) => {
   const chatId = msg.chat.id;
   const userId = msg.from.id;
-  
-  // Only work in private chats
-  if (msg.chat.type !== 'private') return;
-  
+
   // Check if already verified
   if (verifiedUsers.has(userId)) {
     return bot.sendMessage(chatId, '✅ You are already verified! Send me a phone number to get info.');
@@ -76,9 +73,6 @@ bot.on('callback_query', async (callbackQuery) => {
   const userId = callbackQuery.from.id;
   const data = callbackQuery.data;
   
-  // Ignore if not private
-  if (msg.chat.type !== 'private') return;
-  
   if (data === 'verify_join') {
     await bot.answerCallbackQuery(callbackQuery.id, { text: 'Checking membership...' });
 
@@ -99,9 +93,6 @@ bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userId = msg.from.id;
   const text = msg.text?.trim();
-  
-  // Ignore commands (handled separately)
-  if (text?.startsWith('/')) return;
 
   // Ignore commands
   if (text?.startsWith('/')) return;
@@ -165,9 +156,6 @@ bot.on('callback_query', async (callbackQuery) => {
   const msg = callbackQuery.message;
   const chatId = msg.chat.id;
   const data = callbackQuery.data;
-
-    // Ignore if not private
-  if (msg.chat.type !== 'private') return;
 
   if (data === 'another_number') {
     await bot.answerCallbackQuery(callbackQuery.id);
