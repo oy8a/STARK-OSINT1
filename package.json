@@ -1,17 +1,13 @@
 {
-  "name": "ft-osint-bot",
+  "name": "osint-telegram-bot",
   "version": "1.0.0",
-  "description": "Telegram bot for phone number OSINT",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "axios": "^1.6.0",
-    "express": "^4.18.2",
-    "node-telegram-bot-api": "^0.64.0"
-  },
-  "engines": {
-    "node": "18.x"
+    "axios": "^1.6.7",
+    "express": "^4.19.2",
+    "node-telegram-bot-api": "^0.66.0"
   }
 }
