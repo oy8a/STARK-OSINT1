@@ -218,7 +218,9 @@ async function isUserMember(chatId, userId) {
       [{ text: "✅ I've Joined", callback_data: 'verify_join' }]
     ]
   };
-  await bot.sendMessage(
+bot.on('message', async (msg) => { // ✅ Added 'async'
+  await bot.sendMessage(...)
+});
     chatId,
     '⚠️ You must join my channel to use this bot.\n\nClick the button below to join, then click "I\'ve Joined".',
     { reply_markup: inlineKeyboard }
