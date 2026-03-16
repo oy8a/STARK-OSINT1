@@ -205,7 +205,7 @@ app.get('/', (req,res)=>{
 
 app.listen(PORT, ()=>{
   console.log(`🌐 Server running on ${PORT}`);
-});});
+});
 
 // ---------- Helper: Check channel membership ----------
 async function isUserMember(chatId, userId) {
